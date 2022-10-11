@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+
+
+  mysql-db:
+    image: mysql:latest
+    networks:
+      - my_network_from_compose
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_USER: 'datascientest'
+      MYSQL_PASSWORD: 'root@123'
+      MYSQL_DATABASE: 'myproject'
+    ports:
+      - "3306:3306"
+  
+  
+  myflaskapi:
+    build: .
+    image: backend:v1
+    networks:
+      - my_network_from_compose
+    depends_on:
+      - mysql-db
+    ports:
+      - "5000:5000"
+
+
+  populatedb:
+    image: backend:v1
+    container_name: populatedb
+    networks:
+      - my_network_from_compose
+    command: python create_populate_table.py
+    depends_on:
+      - mysql-db
+    restart: on-failure
+    
+
+
+networks:
+  my_network_from_compose:
