@@ -1,0 +1,8 @@
+Choix de la base de données : MySQL
+
+Justification :
+ 
+•	MySQL est beaucoup plus simple à utiliser que la plupart des serveurs de bases de données
+•	On peut effectuer diverses opérations sur une base MySQL en utilisant des interfaces écrites en C, Perl, C++, Java, Python, PHP
+•	Il est totalement open source et gratuit, ses performances sont excellentes et il est en plus multithread et multi-utilisateurs
+•	Il est adapté au fichier tabulaire « Pokeman.csv » que nous avons choisit
